@@ -1,0 +1,13 @@
+{
+  "name": "DailyDo",
+  "short_name": "DailyDo",
+  "description": "Daily habit tracker with streaks and analytics",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f9f8f5",
+  "theme_color": "#1e1b4b",
+  "orientation": "portrait",
+  "icons": [
+    { "src": "/favicon.ico", "sizes": "64x64", "type": "image/x-icon" }
+  ]
+}

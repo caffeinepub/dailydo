@@ -1,0 +1,246 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── Font faces ─────────────────────────────────────────── */
+@font-face {
+  font-family: "Bricolage Grotesque";
+  src: url("/assets/fonts/BricolageGrotesque[opsz,wdth,wght].woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Outfit";
+  src: url("/assets/fonts/Outfit[wght].woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ─── Design Tokens ──────────────────────────────────────── */
+@layer base {
+  :root {
+    --radius: 0.75rem;
+
+    /* Backgrounds */
+    --background: 0.985 0.004 106;
+    --foreground: 0.18 0.02 260;
+
+    /* Card / Popover */
+    --card: 1 0 0;
+    --card-foreground: 0.18 0.02 260;
+    --popover: 1 0 0;
+    --popover-foreground: 0.18 0.02 260;
+
+    /* Primary — deep navy */
+    --primary: 0.26 0.06 265;
+    --primary-foreground: 0.985 0.004 106;
+
+    /* Secondary — soft slate */
+    --secondary: 0.94 0.012 260;
+    --secondary-foreground: 0.26 0.06 265;
+
+    /* Muted */
+    --muted: 0.94 0.012 260;
+    --muted-foreground: 0.52 0.025 260;
+
+    /* Accent — warm amber */
+    --accent: 0.82 0.12 85;
+    --accent-foreground: 0.18 0.02 260;
+
+    /* Destructive */
+    --destructive: 0.577 0.245 27.325;
+    --destructive-foreground: 0.985 0 0;
+
+    /* Borders & inputs */
+    --border: 0.88 0.015 260;
+    --input: 0.88 0.015 260;
+    --ring: 0.55 0.08 265;
+
+    /* Success — forest green */
+    --success: 0.62 0.17 145;
+    --success-foreground: 1 0 0;
+
+    /* Warning — amber */
+    --warning: 0.78 0.14 85;
+    --warning-foreground: 0.18 0.02 260;
+
+    /* Chart colors */
+    --chart-1: 0.62 0.17 145;
+    --chart-2: 0.78 0.14 85;
+    --chart-3: 0.577 0.245 27.325;
+    --chart-4: 0.55 0.12 265;
+    --chart-5: 0.7 0.1 200;
+
+    /* Sidebar */
+    --sidebar: 0.97 0.008 260;
+    --sidebar-foreground: 0.18 0.02 260;
+    --sidebar-primary: 0.26 0.06 265;
+    --sidebar-primary-foreground: 0.985 0.004 106;
+    --sidebar-accent: 0.94 0.012 260;
+    --sidebar-accent-foreground: 0.26 0.06 265;
+    --sidebar-border: 0.88 0.015 260;
+    --sidebar-ring: 0.55 0.08 265;
+
+    /* Streak amber */
+    --streak: 0.82 0.14 55;
+  }
+
+  .dark {
+    --background: 0.14 0.025 260;
+    --foreground: 0.95 0.008 100;
+
+    --card: 0.19 0.03 262;
+    --card-foreground: 0.95 0.008 100;
+    --popover: 0.22 0.035 262;
+    --popover-foreground: 0.95 0.008 100;
+
+    /* Primary — light lavender */
+    --primary: 0.85 0.025 260;
+    --primary-foreground: 0.14 0.025 260;
+
+    /* Secondary */
+    --secondary: 0.24 0.04 263;
+    --secondary-foreground: 0.95 0.008 100;
+
+    /* Muted */
+    --muted: 0.24 0.04 263;
+    --muted-foreground: 0.62 0.025 260;
+
+    /* Accent — warm amber stays */
+    --accent: 0.82 0.12 85;
+    --accent-foreground: 0.14 0.025 260;
+
+    /* Destructive */
+    --destructive: 0.65 0.22 25;
+    --destructive-foreground: 0.95 0.008 100;
+
+    /* Borders */
+    --border: 0.3 0.04 262;
+    --input: 0.28 0.038 262;
+    --ring: 0.65 0.12 265;
+
+    /* Success */
+    --success: 0.55 0.16 145;
+    --success-foreground: 0.14 0.025 260;
+
+    /* Warning */
+    --warning: 0.78 0.14 85;
+    --warning-foreground: 0.14 0.025 260;
+
+    /* Charts */
+    --chart-1: 0.55 0.16 145;
+    --chart-2: 0.78 0.14 85;
+    --chart-3: 0.65 0.22 25;
+    --chart-4: 0.6 0.14 265;
+    --chart-5: 0.65 0.1 200;
+
+    /* Sidebar */
+    --sidebar: 0.19 0.03 262;
+    --sidebar-foreground: 0.95 0.008 100;
+    --sidebar-primary: 0.85 0.025 260;
+    --sidebar-primary-foreground: 0.14 0.025 260;
+    --sidebar-accent: 0.24 0.04 263;
+    --sidebar-accent-foreground: 0.95 0.008 100;
+    --sidebar-border: 0.3 0.04 262;
+    --sidebar-ring: 0.65 0.12 265;
+
+    --streak: 0.82 0.14 55;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display;
+  }
+}
+
+/* ─── Custom utilities ───────────────────────────────────── */
+@layer utilities {
+  .text-success {
+    color: oklch(var(--success));
+  }
+  .bg-success {
+    background-color: oklch(var(--success));
+  }
+  .text-success-foreground {
+    color: oklch(var(--success-foreground));
+  }
+  .text-warning {
+    color: oklch(var(--warning));
+  }
+  .bg-warning {
+    background-color: oklch(var(--warning));
+  }
+  .text-streak {
+    color: oklch(var(--streak));
+  }
+  .bg-streak {
+    background-color: oklch(var(--streak));
+  }
+
+  /* Safe area padding for mobile */
+  .pb-safe {
+    padding-bottom: env(safe-area-inset-bottom, 0.5rem);
+  }
+  .pt-safe {
+    padding-top: env(safe-area-inset-top, 0px);
+  }
+}
+
+/* ─── Task checkbox animation ────────────────────────────── */
+@keyframes strikethrough {
+  from { width: 0%; }
+  to   { width: 100%; }
+}
+
+.task-strikethrough {
+  position: relative;
+}
+.task-strikethrough::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  height: 2px;
+  background-color: oklch(var(--muted-foreground));
+  animation: strikethrough 0.3s ease-out forwards;
+}
+
+/* ─── Progress bar shimmer ───────────────────────────────── */
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+.progress-shimmer {
+  background-size: 200% auto;
+  animation: shimmer 2s linear infinite;
+}
+
+/* ─── Celebration pop ────────────────────────────────────── */
+@keyframes celebrate-pop {
+  0%   { transform: scale(0.85); opacity: 0; }
+  60%  { transform: scale(1.04); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.celebrate-pop {
+  animation: celebrate-pop 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+/* ─── Scrollbar thinning ─────────────────────────────────── */
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: oklch(var(--border));
+  border-radius: 999px;
+}
